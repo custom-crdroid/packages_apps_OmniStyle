@@ -18,9 +18,6 @@
 package org.omnirom.omnistyle;
 
 import android.Manifest;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -56,6 +53,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,7 +73,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class BrowseWallsActivity extends Activity {
+public class BrowseWallsActivity extends AppCompatActivity {
+
     private static final String TAG = "BrowseWallsActivity";
     private static final String IMAGE_TYPE = "image/*";
     private static final int IMAGE_CROP_AND_SET = 1;
@@ -277,7 +277,6 @@ public class BrowseWallsActivity extends Activity {
 
         setContentView(R.layout.content_wallpapers);
         mPackageName = getClass().getPackage().getName();
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 
         mWallpaperList = new ArrayList<WallpaperInfo>();
         mWallpaperUrlList = new ArrayList<RemoteWallpaperInfo>();
@@ -337,7 +336,7 @@ public class BrowseWallsActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == IMAGE_CROP_AND_SET && resultCode == Activity.RESULT_OK) {
+        if (requestCode == IMAGE_CROP_AND_SET && resultCode == RESULT_OK) {
             finish();
         }
     }

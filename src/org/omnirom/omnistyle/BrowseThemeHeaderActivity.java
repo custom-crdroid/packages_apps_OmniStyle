@@ -17,8 +17,6 @@
  */
 package org.omnirom.omnistyle;
 
-import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -41,12 +39,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.omnirom.omnistyle.HeaderUtils.DaylightHeaderInfo;
 
-public class BrowseThemeHeaderActivity extends Activity {
+public class BrowseThemeHeaderActivity extends AppCompatActivity {
+
     private static final String TAG = "BrowseThemeHeaderActivity";
     private static final String DEFAULT_HEADER_PACKAGE = "com.android.systemui";
     private static final String STATUS_BAR_CUSTOM_HEADER_IMAGE = "status_bar_custom_header_image";
@@ -114,8 +115,6 @@ public class BrowseThemeHeaderActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_browse);
-
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 
         mProgress = (ProgressBar) findViewById(R.id.browse_progress);
         mCreatorName = (TextView) findViewById(R.id.meta_creator);

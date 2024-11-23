@@ -18,9 +18,6 @@
 package org.omnirom.omnistyle;
 
 import android.Manifest;
-import android.app.ActionBar;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.WallpaperManager;
 import android.content.ComponentName;
 import android.content.Context;
@@ -47,6 +44,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -66,7 +65,8 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class BrowseWallsFilterActivity extends Activity {
+public class BrowseWallsFilterActivity extends AppCompatActivity {
+
     private static final String TAG = "BrowseWallsActivity";
     private static final String IMAGE_TYPE = "image/*";
     private static final int IMAGE_CROP_AND_SET = 1;
@@ -170,7 +170,6 @@ public class BrowseWallsFilterActivity extends Activity {
             mFilterTag = intent.getStringExtra("filter");
         }
         setContentView(R.layout.content_wallpapers_filter);
-        getActionBar().setDisplayOptions(ActionBar.DISPLAY_HOME_AS_UP | ActionBar.DISPLAY_SHOW_TITLE);
 
         mWallpaperUrlList = new ArrayList<RemoteWallpaperInfo>();
         mNoNetworkMessage = (TextView) findViewById(R.id.no_network_message);
@@ -201,7 +200,7 @@ public class BrowseWallsFilterActivity extends Activity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == IMAGE_CROP_AND_SET && resultCode == Activity.RESULT_OK) {
+        if (requestCode == IMAGE_CROP_AND_SET && resultCode == RESULT_OK) {
             finish();
         }
     }
